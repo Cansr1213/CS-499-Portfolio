@@ -1,30 +1,33 @@
 /* ------------------------------------------------------------ */
-/*  SUPER NINTENDO + MARIO COLOR PALLETE (Portfolio Safe)       */
+/*  SUPER NINTENDO COLOR THEME (CS-499 SAFE)                    */
 /* ------------------------------------------------------------ */
 
-/* Mario / SNES Color Palette */
+/* SNES Color Palette */
 :root {
     --snes-purple: #5d4cff;
     --snes-dark-purple: #3a2bbf;
-    --mario-sky: #7ec0ff;
-    --mario-brick: #b85b2a;
-    --mario-gold: #ffdd55;
-    --mario-cloud: #ffffff;
+    --snes-sky: #7ec0ff;
+    --snes-gold: #ffdd55;
     --retro-gray: #dcdcdc;
     --retro-dark-gray: #2b2b2b;
 }
 
-/* Background (Mario sky color, soft and non-distracting) */
+/* ------------------------------------------------------------ */
+/*  GLOBAL STYLES                                               */
+/* ------------------------------------------------------------ */
+
 body {
-    background: var(--mario-sky);
+    background-color: var(--snes-sky);
     font-family: "Press Start 2P", monospace;
     font-size: 12px;
     color: #222;
     padding: 20px;
-    animation: fadeIn 1.2s ease-out;
 }
 
-/* Main container styled like a SNES menu window */
+/* ------------------------------------------------------------ */
+/*  MAIN CONTAINER (SNES MENU WINDOW)                            */
+/* ------------------------------------------------------------ */
+
 .main-container {
     max-width: 900px;
     margin: auto;
@@ -36,30 +39,53 @@ body {
     border: 6px solid var(--snes-purple);
     box-shadow:
         0 0 0 4px var(--retro-dark-gray),
-        inset 0 0 15px rgba(0,0,0,0.3),
-        0 0 25px var(--snes-purple);
+        inset 0 0 15px rgba(0,0,0,0.25);
 }
 
-/* SNES / Mario heading colors */
+/* ------------------------------------------------------------ */
+/*  HEADINGS                                                    */
+/* ------------------------------------------------------------ */
+
 h1, h2, h3 {
     color: var(--snes-purple);
     text-shadow: 2px 2px var(--retro-dark-gray);
+    margin-top: 30px;
 }
 
-/* Links (Mario gold hover effect, SNES purple default) */
+/* ------------------------------------------------------------ */
+/*  LINKS                                                       */
+/* ------------------------------------------------------------ */
+
 a {
     color: var(--snes-dark-purple);
     text-decoration: none;
-    transition: 0.2s ease-in-out;
 }
 
 a:hover {
-    color: var(--mario-gold);
-    text-shadow: 2px 2px var(--retro-dark-gray), 0 0 6px var(--mario-gold);
-    transform: scale(1.03);
+    color: var(--snes-gold);
+    text-shadow: 2px 2px var(--retro-dark-gray);
 }
 
-/* Section Boxes */
+/* ------------------------------------------------------------ */
+/*  SECTION HEADER IMAGE (YOUR PANEL IMAGE)                     */
+/* ------------------------------------------------------------ */
+
+.section-header {
+    background: url('/CS-499-Portfolio/assets/img/section-header.png') no-repeat center;
+    background-size: contain;
+
+    padding: 18px;
+    margin: 45px 0 25px 0;
+
+    text-align: center;
+    color: var(--snes-purple);
+    text-shadow: 1px 1px #000;
+}
+
+/* ------------------------------------------------------------ */
+/*  SECTION CONTENT BOX                                         */
+/* ------------------------------------------------------------ */
+
 .section-box {
     padding: 18px;
     background: #f7f7f7;
@@ -67,34 +93,36 @@ a:hover {
     border: 4px solid var(--snes-purple);
 
     box-shadow:
-        inset 0 0 8px rgba(0,0,0,0.2),
-        0 0 10px rgba(0,0,0,0.2);
+        inset 0 0 8px rgba(0,0,0,0.2);
 }
 
-/* SNES / Mario Buttons */
+/* ------------------------------------------------------------ */
+/*  BUTTONS (OPTIONAL)                                          */
+/* ------------------------------------------------------------ */
+
 button, .btn {
     background: var(--snes-purple);
     border: 3px solid var(--retro-dark-gray);
-    padding: 12px 18px;
+    padding: 10px 16px;
     color: white;
     border-radius: 6px;
     box-shadow: 3px 3px var(--retro-dark-gray);
-    transition: 0.1s;
     font-family: "Press Start 2P";
 }
 
 button:hover, .btn:hover {
-    background: var(--mario-gold);
+    background: var(--snes-gold);
     color: black;
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px var(--retro-dark-gray);
 }
 
-/* Footer */
+/* ------------------------------------------------------------ */
+/*  FOOTER                                                      */
+/* ------------------------------------------------------------ */
+
 footer {
     text-align: center;
     margin-top: 40px;
     font-size: 10px;
     color: var(--retro-dark-gray);
-    text-shadow: 1px 1px #000000;
+    text-shadow: 1px 1px #000;
 }
