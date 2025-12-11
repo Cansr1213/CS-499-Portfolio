@@ -33,7 +33,7 @@ body {
     margin: auto;
     padding: 25px;
 
-    background: var(--retro-gray);
+    background: url('/CS-499-Portfolio/assets/img/background.png')
     border-radius: 10px;
 
     border: 6px solid var(--snes-purple);
