@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="/CS-499-Portfolio/assets/css/style.css">
+
 
 <div class="main-container">
 
