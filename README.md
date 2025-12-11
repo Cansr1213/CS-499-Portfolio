@@ -2,6 +2,8 @@
 
 <div class="main-container">
 
+<!-- SNES Portfolio Start -->
+
 # **Rafael V. Canseco — CS-499 Capstone Portfolio**
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/SNES_logo.svg" width="220" alt="SNES Logo">
@@ -77,4 +79,3 @@ Email: *your email here*
 </div>
 
 <footer>Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco</footer>
-
