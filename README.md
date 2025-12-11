@@ -1,4 +1,8 @@
+<link rel="stylesheet" href="assets/css/style.css">
+<div class="main-container">
+
 # Rafael V. Canseco — CS-499 Capstone Portfolio
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/31/SNES_logo.svg" width="220">
 
 Welcome to my Computer Science Capstone Portfolio.  
 This site showcases my journey through the CS program and the work completed for CS-499, demonstrating my skills in software engineering, algorithms/data structures, and database design.
@@ -56,3 +60,5 @@ All milestone narratives, rubrics, and other supportive documentation are availa
 GitHub: https://github.com/Cansr1213  
 Email: *your email here*
 
+</div>
+<footer>Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco</footer>
