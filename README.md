@@ -7,7 +7,6 @@
 
 # **Rafael V. Canseco — CS-499 Capstone Portfolio**
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/31/SNES_logo.svg" width="220" alt="SNES Logo">
 
 Welcome to my Computer Science Capstone Portfolio.  
 This site showcases my journey through the CS program and the work completed for CS-499, demonstrating my skills in:
