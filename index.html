@@ -1,14 +1,11 @@
-<!doctype html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rafael V. Canseco — CS-499 Capstone Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rafael V. Canseco — CS-499 Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CS-499-Portfolio/assets/css/style.css" />
     <style>
         /* ============================================================ */
         /*  NES-STYLE COLOR THEME                                       */
@@ -24,9 +21,6 @@
             --nes-green: #00a800;
         }
 
-  <!-- IMPORTANT: repo-name prefix -->
-  <link rel="stylesheet" href="/CS-499-Portfolio/assets/css/style.css" />
-</head>
         /* ============================================================ */
         /*  LOADING SCREEN                                              */
         /* ============================================================ */
@@ -45,8 +39,6 @@
             transition: opacity 0.5s;
         }
 
-<body>
-  <div class="main-container">
         #loading-screen.hidden {
             opacity: 0;
             pointer-events: none;
@@ -224,47 +216,6 @@
         }
 
         /* ============================================================ */
-        /*  STATS BAR                                                   */
-        /* ============================================================ */
-        .stats-container {
-            background: var(--nes-black);
-            color: var(--nes-white);
-            padding: 20px;
-            border: 4px solid var(--nes-gold);
-            margin: 30px 0;
-        }
-
-        .stat-item {
-            margin: 15px 0;
-        }
-
-        .stat-label {
-            font-size: 10px;
-            color: var(--nes-gold);
-            margin-bottom: 8px;
-        }
-
-        .stat-bar {
-            width: 100%;
-            height: 20px;
-            background: var(--nes-dark-gray);
-            border: 2px solid var(--nes-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-    <h1><strong>Rafael V. Canseco — CS-499 Capstone Portfolio</strong></h1>
-        .stat-fill {
-            height: 100%;
-            background: var(--nes-green);
-            transition: width 1s ease-out;
-        }
-
-    <img src="/CS-499-Portfolio/assets/img/Logo.png"
-     width="220"
-     alt="SNES-style portfolio logo">
-
-        /* ============================================================ */
         /*  PROJECT CARDS                                               */
         /* ============================================================ */
         .project-card {
@@ -432,10 +383,26 @@
             h2 {
                 font-size: 12px;
             }
+
+            .loading-text {
+                font-size: 14px;
+            }
+
+            .loading-bar {
+                width: 200px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- ✅ LOADING SCREEN (THIS WAS MISSING!) -->
+    <div id="loading-screen">
+        <div class="loading-text">LOADING...</div>
+        <div class="loading-bar">
+            <div class="loading-fill"></div>
+        </div>
+    </div>
+
     <!-- NAVIGATION -->
     <nav class="nav-bar">
         <div class="nav-logo">PORTFOLIO v1.0</div>
@@ -570,12 +537,14 @@
                 }
             });
         });
-      window.addEventListener('load', () => {
-        const loadingScreen = document.getElementById('loading-screen');
-        setTimeout(() => {
-            loadingScreen.classList.add('hidden');
-        }, 2000); // 2 seconds = matches loadProgress animation
-    });
+
+        // Loading screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loading-screen');
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 2000);
+        });
     </script>
 </body>
 </html>
