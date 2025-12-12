@@ -1,21 +1,21 @@
 <link rel="stylesheet" href="/CS-499-Portfolio/assets/css/style.css">
 
-
 <div class="main-container">
 
 <!-- SNES Portfolio Start -->
 
 # **Rafael V. Canseco — CS-499 Capstone Portfolio**
 
+Welcome to my Computer Science Capstone Portfolio for **CS-499 at Southern New Hampshire University**.  
+This site represents the culmination of my work throughout the Computer Science program and demonstrates my ability to **design, enhance, and evaluate computing solutions** using industry-standard tools and practices.
 
-Welcome to my Computer Science Capstone Portfolio.  
-This site showcases my journey through the CS program and the work completed for CS-499, demonstrating my skills in:
+My portfolio highlights experience across the following core areas:
 
-- Software Engineering  
-- Algorithms & Data Structures  
-- Database Design  
+- **Software Engineering**
+- **Algorithms & Data Structures**
+- **Database Design & Mobile Development**
 
-Each artifact includes both original and enhanced versions, complete narratives, and alignment with CS-499 outcomes.
+Each artifact includes **original and enhanced versions**, detailed technical narratives, and **explicit alignment with the CS-499 course outcomes**, reflecting my readiness for professional software development roles.
 
 ---
 
@@ -30,7 +30,7 @@ Each artifact includes both original and enhanced versions, complete narratives,
 
 ## 🧰 **Software Design & Engineering**  
 **Project:** 3D Scene Rendering System (CS-330)  
-**Enhancements:** Architecture refactor, defensive programming, improved memory handling, and modular design.
+**Enhancements:** Architecture refactoring, defensive programming, improved memory handling, and modular design to improve maintainability and system stability.
 
 **Files:**  
 - 📂 [Original Code](/artifacts/software-engineering/original)  
@@ -41,17 +41,18 @@ Each artifact includes both original and enhanced versions, complete narratives,
 
 ## 📊 **Algorithms & Data Structures**  
 **Project:** SceneManager Optimization (CS-330)  
-**Enhancements:** O(1) hash maps, improved lookup logic, reduced branching, and algorithmic refactoring.
+**Enhancements:** O(1) hash map lookups, improved control flow, reduced conditional branching, and scalable algorithmic refactoring.
 
 **Files:**  
+- 📂 [Original Code](/artifacts/algorithms/original)
 - 📂 [Enhanced Code](/artifacts/algorithms/enhanced)  
 - 📄 [Narrative (PDF)](/docs/algorithms-narrative.pdf)
 
 ---
 
-## 🗄️ **Databases (FitTrack Mobile App)**  
+## 🗄️ **Databases & Mobile Development (FitTrack App)**  
 **Project:** Room Database for FitTrack (CS-360)  
-**Enhancements:** User-specific queries, improved schema, MVVM + Flow integration, indexing, and better data security.
+**Enhancements:** User-specific queries, improved schema design, MVVM + Kotlin Flow integration, indexing, and strengthened data security.
 
 **Files:**  
 - 📂 [Original Code](/artifacts/databases/original)  
@@ -78,4 +79,6 @@ Email: rafael.canseco@snhu.edu
 
 </div>
 
-<footer>Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco</footer>
+<footer>
+Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco
+</footer>
