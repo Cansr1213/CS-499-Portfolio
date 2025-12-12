@@ -1,95 +1,613 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rafael V. Canseco — CS-499 Capstone Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael V. Canseco — CS-499 Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================ */
+        /*  NES-STYLE COLOR THEME                                       */
+        /* ============================================================ */
+        :root {
+            --nes-black: #0f0f0f;
+            --nes-dark-gray: #2b2b2b;
+            --nes-light-gray: #d8d8d8;
+            --nes-white: #ffffff;
+            --nes-red: #d82800;
+            --nes-blue: #0038a8;
+            --nes-gold: #f8b800;
+            --nes-green: #00a800;
+        }
 
-  <!-- IMPORTANT: repo-name prefix -->
-  <link rel="stylesheet" href="/CS-499-Portfolio/assets/css/style.css" />
+        /* ============================================================ */
+        /*  LOADING SCREEN                                              */
+        /* ============================================================ */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--nes-black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-text {
+            color: var(--nes-white);
+            font-family: "Press Start 2P", monospace;
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: blink 1s infinite;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 30px;
+            border: 4px solid var(--nes-white);
+            background: var(--nes-dark-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-fill {
+            height: 100%;
+            background: var(--nes-green);
+            width: 0%;
+            animation: loadProgress 2s forwards;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes loadProgress {
+            to { width: 100%; }
+        }
+
+        /* ============================================================ */
+        /*  SCANLINE EFFECT                                             */
+        /* ============================================================ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.03),
+                rgba(0, 0, 0, 0.03) 2px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ============================================================ */
+        /*  BASE STYLES                                                 */
+        /* ============================================================ */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: "Press Start 2P", monospace;
+            font-size: 12px;
+            line-height: 1.7;
+            color: var(--nes-black);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0V0zm30 30h30v30H30V30z' fill='%230038a8' fill-opacity='0.4'/%3E%3C/svg%3E");
+            background-color: var(--nes-blue);
+            background-attachment: fixed;
+        }
+
+        /* ============================================================ */
+        /*  STICKY NAVIGATION                                           */
+        /* ============================================================ */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--nes-red);
+            border: 6px solid var(--nes-black);
+            margin-bottom: 24px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 0 var(--nes-black);
+        }
+
+        .nav-logo {
+            color: var(--nes-white);
+            font-size: 14px;
+            text-shadow: 2px 2px 0 var(--nes-black);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--nes-white);
+            text-decoration: none;
+            padding: 8px 16px;
+            background: var(--nes-black);
+            border: 3px solid var(--nes-white);
+            transition: all 0.1s;
+        }
+
+        .nav-link:hover {
+            background: var(--nes-gold);
+            color: var(--nes-black);
+            transform: translate(2px, 2px);
+        }
+
+        /* ============================================================ */
+        /*  MAIN CONTAINER                                              */
+        /* ============================================================ */
+        .main-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 32px;
+            background: rgba(216, 216, 216, 0.98);
+            border: 6px solid var(--nes-black);
+            border-radius: 6px;
+            box-shadow:
+                0 0 0 4px var(--nes-white),
+                6px 6px 0 var(--nes-black);
+        }
+
+        /* ============================================================ */
+        /*  HERO SECTION                                                */
+        /* ============================================================ */
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border: 6px solid var(--nes-black);
+            box-shadow: 4px 4px 0 var(--nes-gold);
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-title {
+            font-size: 18px;
+            color: var(--nes-red);
+            text-shadow: 3px 3px 0 var(--nes-black);
+            margin: 20px 0;
+        }
+
+        .hero-subtitle {
+            font-size: 11px;
+            color: var(--nes-dark-gray);
+            margin-bottom: 30px;
+        }
+
+        /* ============================================================ */
+        /*  STATS BAR                                                   */
+        /* ============================================================ */
+        .stats-container {
+            background: var(--nes-black);
+            color: var(--nes-white);
+            padding: 20px;
+            border: 4px solid var(--nes-gold);
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            margin: 15px 0;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: var(--nes-gold);
+            margin-bottom: 8px;
+        }
+
+        .stat-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--nes-dark-gray);
+            border: 2px solid var(--nes-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-fill {
+            height: 100%;
+            background: var(--nes-green);
+            transition: width 1s ease-out;
+        }
+
+        /* ============================================================ */
+        /*  HEADINGS                                                    */
+        /* ============================================================ */
+        h1, h2, h3 {
+            color: var(--nes-red);
+            text-shadow: 2px 2px 0 var(--nes-black);
+            margin-top: 40px;
+        }
+
+        h2::before {
+            content: "▶ ";
+            color: var(--nes-gold);
+        }
+
+        /* ============================================================ */
+        /*  PROJECT CARDS                                               */
+        /* ============================================================ */
+        .project-card {
+            background: var(--nes-white);
+            border: 4px solid var(--nes-black);
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 4px 4px 0 var(--nes-dark-gray);
+            transition: all 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--nes-dark-gray);
+        }
+
+        .project-title {
+            font-size: 14px;
+            color: var(--nes-blue);
+            margin-bottom: 15px;
+        }
+
+        /* ============================================================ */
+        /*  NES BUTTONS                                                 */
+        /* ============================================================ */
+        .nes-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 8px 8px 8px 0;
+            background: var(--nes-red);
+            border: 4px solid var(--nes-black);
+            color: var(--nes-white);
+            text-decoration: none;
+            font-family: "Press Start 2P", monospace;
+            font-size: 10px;
+            box-shadow: 4px 4px 0 var(--nes-black);
+            transition: all 0.1s;
+            cursor: pointer;
+        }
+
+        .nes-button:hover {
+            background: var(--nes-gold);
+            color: var(--nes-black);
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--nes-black);
+        }
+
+        .nes-button.blue {
+            background: var(--nes-blue);
+        }
+
+        .nes-button.green {
+            background: var(--nes-green);
+        }
+
+        /* ============================================================ */
+        /*  LINKS                                                       */
+        /* ============================================================ */
+        a {
+            color: var(--nes-blue);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--nes-gold);
+            text-shadow: 1px 1px 0 var(--nes-black);
+        }
+
+        /* ============================================================ */
+        /*  DIVIDERS                                                    */
+        /* ============================================================ */
+        hr {
+            border: none;
+            height: 4px;
+            margin: 32px 0;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    var(--nes-black),
+                    var(--nes-black) 12px,
+                    var(--nes-white) 12px,
+                    var(--nes-white) 24px
+                );
+        }
+
+        /* ============================================================ */
+        /*  CONTACT SECTION                                             */
+        /* ============================================================ */
+        .contact-box {
+            background: var(--nes-blue);
+            color: var(--nes-white);
+            padding: 24px;
+            border: 6px solid var(--nes-black);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .contact-box a {
+            color: var(--nes-gold);
+        }
+
+        /* ============================================================ */
+        /*  FOOTER                                                      */
+        /* ============================================================ */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            font-size: 10px;
+            background: var(--nes-black);
+            color: var(--nes-white);
+            border: 4px solid var(--nes-gold);
+        }
+
+        /* ============================================================ */
+        /*  MOBILE RESPONSIVE                                           */
+        /* ============================================================ */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+                font-size: 10px;
+            }
+
+            .main-container {
+                padding: 16px;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 14px;
+            }
+
+            .hero-logo {
+                max-width: 250px;
+            }
+
+            .nes-button {
+                font-size: 8px;
+                padding: 10px 16px;
+            }
+
+            h2 {
+                font-size: 12px;
+            }
+        }
+
+        /* ============================================================ */
+        /*  PIXEL ICONS                                                 */
+        /* ============================================================ */
+        .icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="main-container">
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+        <div class="loading-text">NOW LOADING...</div>
+        <div class="loading-bar">
+            <div class="loading-fill"></div>
+        </div>
+    </div>
 
-    <h1><strong>Rafael V. Canseco — CS-499 Capstone Portfolio</strong></h1>
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <div class="nav-logo">PORTFOLIO v1.0</div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">HOME</a>
+            <a href="#projects" class="nav-link">PROJECTS</a>
+            <a href="#skills" class="nav-link">SKILLS</a>
+            <a href="#contact" class="nav-link">CONTACT</a>
+        </div>
+    </nav>
 
-    <img src="/CS-499-Portfolio/assets/img/Logo.png"
-     width="220"
-     alt="SNES-style portfolio logo">
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <!-- HERO SECTION -->
+        <section id="home" class="hero">
+            <h1 class="hero-title">Rafael V. Canseco</h1>
+            <img src="/CS-499-Portfolio/assets/img/Logo.png" alt="Portfolio Logo" class="hero-logo">
+            <p class="hero-subtitle">CS-499 CAPSTONE PORTFOLIO</p>
+            <p>Welcome to my Computer Science Capstone Portfolio! This site showcases my journey through the CS program, demonstrating skills in Software Engineering, Algorithms & Data Structures, and Database Design.</p>
+        </section>
 
+        <hr>
 
-    <p>
-      Welcome to my Computer Science Capstone Portfolio.<br>
-      This site showcases my journey through the CS program and the work completed for CS-499, demonstrating my skills in:
-    </p>
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <h2>PLAYER STATS</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-label">C++ / OpenGL</div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Java / Kotlin</div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Database Design (SQL)</div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Algorithms & Data Structures</div>
+                    <div class="stat-bar">
+                        <div class="stat-fill" style="width: 88%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <ul>
-      <li>Software Engineering</li>
-      <li>Algorithms &amp; Data Structures</li>
-      <li>Database Design</li>
-    </ul>
+        <hr>
 
-    <hr>
+        <!-- CODE REVIEW -->
+        <section>
+            <h2>CODE REVIEW VIDEO</h2>
+            <div class="project-card">
+                <p>Watch my comprehensive code review covering all three enhancement categories:</p>
+                <a href="/CS-499-Portfolio/CS-499%20Code%20Review.mp4" class="nes-button">▶ WATCH VIDEO</a>
+            </div>
+        </section>
 
-    <h2>🎬 <strong>Code Review Video</strong></h2>
-    <p>▶ <a href="/CS-499-Portfolio/CS-499%20Code%20Review.mp4"><strong>View Code Review Video</strong></a></p>
+        <hr>
 
-    <hr>
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <h2>ARTIFACTS & ENHANCEMENTS</h2>
 
-    <h1>📁 <strong>Artifacts &amp; Enhancements</strong></h1>
+            <!-- Software Engineering -->
+            <div class="project-card">
+                <h3 class="project-title">🧰 SOFTWARE DESIGN & ENGINEERING</h3>
+                <p><strong>Project:</strong> 3D Scene Rendering System (CS-330)</p>
+                <p><strong>Enhancements:</strong> Architecture refactor, defensive programming, improved memory handling, and modular design.</p>
+                <div>
+                    <a href="/CS-499-Portfolio/artifacts/software-engineering/original" class="nes-button blue">ORIGINAL CODE</a>
+                    <a href="/CS-499-Portfolio/artifacts/software-engineering/enhanced" class="nes-button green">ENHANCED CODE</a>
+                    <a href="/CS-499-Portfolio/docs/software-engineering-narrative.pdf" class="nes-button">NARRATIVE</a>
+                </div>
+            </div>
 
-    <h2>🧰 <strong>Software Design &amp; Engineering</strong></h2>
-    <p><strong>Project:</strong> 3D Scene Rendering System (CS-330)<br>
-       <strong>Enhancements:</strong> Architecture refactor, defensive programming, improved memory handling, and modular design.</p>
-    <ul>
-      <li>📂 <a href="/CS-499-Portfolio/artifacts/software-engineering/original">Original Code</a></li>
-      <li>📂 <a href="/CS-499-Portfolio/artifacts/software-engineering/enhanced">Enhanced Code</a></li>
-      <li>📄 <a href="/CS-499-Portfolio/docs/software-engineering-narrative.pdf">Narrative (PDF)</a></li>
-    </ul>
+            <!-- Algorithms -->
+            <div class="project-card">
+                <h3 class="project-title">📊 ALGORITHMS & DATA STRUCTURES</h3>
+                <p><strong>Project:</strong> SceneManager Optimization (CS-330)</p>
+                <p><strong>Enhancements:</strong> O(1) hash maps, improved lookup logic, reduced branching, and algorithmic refactoring.</p>
+                <div>
+                    <a href="/CS-499-Portfolio/artifacts/algorithms/original" class="nes-button blue">ORIGINAL CODE</a>
+                    <a href="/CS-499-Portfolio/artifacts/algorithms/enhanced" class="nes-button green">ENHANCED CODE</a>
+                    <a href="/CS-499-Portfolio/docs/algorithms-narrative.pdf" class="nes-button">NARRATIVE</a>
+                </div>
+            </div>
 
-    <hr>
+            <!-- Databases -->
+            <div class="project-card">
+                <h3 class="project-title">🗄️ DATABASES (FitTrack Mobile App)</h3>
+                <p><strong>Project:</strong> Room Database for FitTrack (CS-360)</p>
+                <p><strong>Enhancements:</strong> User-specific queries, improved schema, MVVM + Flow integration, indexing, and better data security.</p>
+                <div>
+                    <a href="/CS-499-Portfolio/artifacts/databases/original" class="nes-button blue">ORIGINAL CODE</a>
+                    <a href="/CS-499-Portfolio/artifacts/databases/enhanced" class="nes-button green">ENHANCED CODE</a>
+                    <a href="/CS-499-Portfolio/docs/databases-narrative.pdf" class="nes-button">NARRATIVE</a>
+                </div>
+            </div>
+        </section>
 
-    <h2>📊 <strong>Algorithms &amp; Data Structures</strong></h2>
-    <p><strong>Project:</strong> SceneManager Optimization (CS-330)<br>
-       <strong>Enhancements:</strong> O(1) hash maps, improved lookup logic, reduced branching, and algorithmic refactoring.</p>
-    <ul>
-      <li>📂 <a href="/CS-499-Portfolio/artifacts/algorithms/original">Original Code</a></li>
-      <li>📂 <a href="/CS-499-Portfolio/artifacts/algorithms/enhanced">Enhanced Code</a></li>
-      <li>📄 <a href="/CS-499-Portfolio/docs/algorithms-narrative.pdf">Narrative (PDF)</a></li>
-    </ul>
+        <hr>
 
-    <hr>
+        <!-- SELF ASSESSMENT -->
+        <section>
+            <h2>PROFESSIONAL SELF-ASSESSMENT</h2>
+            <div class="project-card">
+                <p>A comprehensive reflection on my growth throughout the Computer Science program, highlighting key learnings, challenges overcome, and professional development.</p>
+                <a href="/CS-499-Portfolio/docs/self-assessment.pdf" class="nes-button">READ ASSESSMENT</a>
+            </div>
+        </section>
 
-    <h2>🗄️ <strong>Databases (FitTrack Mobile App)</strong></h2>
-    <p><strong>Project:</strong> Room Database for FitTrack (CS-360)<br>
-       <strong>Enhancements:</strong> User-specific queries, improved schema, MVVM + Flow integration, indexing, and better data security.</p>
-    <ul>
-      <li>📂 <a href="/CS-499-Portfolio/artifacts/databases/original">Original Code</a></li>
-      <li>📂 <a href="/CS-499-Portfolio/artifacts/databases/enhanced">Enhanced Code</a></li>
-      <li>📄 <a href="/CS-499-Portfolio/docs/databases-narrative.pdf">Narrative (PDF)</a></li>
-    </ul>
+        <hr>
 
-    <hr>
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>CONTACT</h2>
+            <div class="contact-box">
+                <p><strong>Rafael V. Canseco</strong></p>
+                <p>GitHub: <a href="https://github.com/Cansr1213" target="_blank">github.com/Cansr1213</a></p>
+                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            </div>
+        </section>
 
-    <h2>📝 <strong>Professional Self-Assessment</strong></h2>
-    <p>📄 <a href="/CS-499-Portfolio/docs/self-assessment.pdf"><strong>View Self-Assessment (PDF)</strong></a></p>
+        <!-- FOOTER -->
+        <footer>
+            <p>Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco</p>
+            <p>Built with ❤️ and retro gaming nostalgia</p>
+        </footer>
+    </div>
 
-    <hr>
+    <script>
+        // Loading screen animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').classList.add('hidden');
+            }, 2000);
+        });
 
-    <h2>📂 <strong>Additional Documentation</strong></h2>
-    <p>All milestone PDFs and supporting documents can be found in the <a href="/CS-499-Portfolio/docs/">/docs folder</a>.</p>
+        // Animate stats bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
 
-    <hr>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.stat-fill');
+                    fills.forEach(fill => {
+                        fill.style.width = fill.style.width; // Trigger animation
+                    });
+                }
+            });
+        }, observerOptions);
 
-    <h2>📞 <strong>Contact</strong></h2>
-    <p><strong>Rafael V. Canseco</strong><br>
-      GitHub: <a href="https://github.com/Cansr1213">https://github.com/Cansr1213</a><br>
-      Email: <em>your email here</em>
-    </p>
-
-  </div>
-
-  <footer>Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco</footer>
+        const statsContainer = document.querySelector('.stats-container');
+        if (statsContainer) {
+            observer.observe(statsContainer);
+        }
+    </script>
 </body>
 </html>
