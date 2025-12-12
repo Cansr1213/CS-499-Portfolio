@@ -2,7 +2,6 @@
 /*  SUPER NINTENDO COLOR THEME (CS-499 SAFE)                    */
 /* ------------------------------------------------------------ */
 
-/* SNES Color Palette */
 :root {
     --snes-purple: #5d4cff;
     --snes-dark-purple: #3a2bbf;
@@ -13,25 +12,23 @@
 }
 
 /* ------------------------------------------------------------ */
-/*  GLOBAL STYLES                                               */
+/*  GLOBAL STYLES (PAGE BACKGROUND IMAGE)                       */
 /* ------------------------------------------------------------ */
 
 body {
-    background-color: var(--snes-sky);
+    margin: 0;
+    padding: 20px;
+
     font-family: "Press Start 2P", monospace;
     font-size: 12px;
     color: #111;
-    padding: 20px;
-    background: 
-        linear-gradient(
-            rgba(220, 220, 220, 0.94),
-            rgba(220, 220, 220, 0.94)
-        ),
-        url("/CS-499-Portfolio/assets/img/background.png") center / cover no-repeat;
+
+    /* ✅ background.png IS THE PAGE BACKGROUND */
+    background: url("/CS-499-Portfolio/assets/img/background.png") center / cover no-repeat fixed;
 }
 
 /* ------------------------------------------------------------ */
-/*  MAIN CONTAINER (SNES MENU WINDOW)                            */
+/*  MAIN CONTAINER (SNES PANEL)                                 */
 /* ------------------------------------------------------------ */
 
 .main-container {
@@ -39,8 +36,8 @@ body {
     margin: auto;
     padding: 28px;
 
-    /* YOUR uploaded background image */
-   
+    /* Semi-transparent SNES panel */
+    background: rgba(220, 220, 220, 0.95);
 
     border-radius: 10px;
     border: 6px solid var(--snes-purple);
@@ -57,20 +54,17 @@ body {
 
 h1, h2, h3 {
     color: var(--snes-purple);
-    text-shadow:
-        2px 2px 0 #000,
-        0 0 6px rgba(93, 76, 255, 0.6);
+    text-shadow: 2px 2px 0 #000;
     margin-top: 32px;
 }
 
 /* ------------------------------------------------------------ */
-/*  PARAGRAPHS & LISTS (READABILITY FIX)                        */
+/*  TEXT READABILITY                                            */
 /* ------------------------------------------------------------ */
 
 p, li {
     color: #1a1a1a;
     line-height: 1.7;
-    text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
 }
 
 /* ------------------------------------------------------------ */
@@ -79,8 +73,8 @@ p, li {
 
 a {
     color: var(--snes-dark-purple);
-    text-decoration: none;
     font-weight: bold;
+    text-decoration: none;
 }
 
 a:hover {
@@ -105,23 +99,7 @@ hr {
 }
 
 /* ------------------------------------------------------------ */
-/*  SECTION HEADER IMAGE                                        */
-/* ------------------------------------------------------------ */
-
-.section-header {
-    background: url("/CS-499-Portfolio/assets/img/section-header.png") no-repeat center;
-    background-size: contain;
-
-    padding: 20px;
-    margin: 45px 0 25px 0;
-
-    text-align: center;
-    color: var(--snes-purple);
-    text-shadow: 2px 2px #000;
-}
-
-/* ------------------------------------------------------------ */
-/*  SECTION CONTENT BOX                                         */
+/*  SECTION BOXES                                               */
 /* ------------------------------------------------------------ */
 
 .section-box {
@@ -129,10 +107,6 @@ hr {
     background: rgba(255, 255, 255, 0.96);
     border-radius: 6px;
     border: 4px solid var(--snes-purple);
-
-    box-shadow:
-        inset 0 0 10px rgba(0,0,0,0.25),
-        0 0 10px rgba(0,0,0,0.25);
 }
 
 /* ------------------------------------------------------------ */
@@ -145,14 +119,13 @@ button, .btn {
     padding: 12px 18px;
     color: white;
     border-radius: 6px;
-    box-shadow: 3px 3px var(--retro-dark-gray);
     font-family: "Press Start 2P";
-    transition: 0.12s ease-in-out;
+    box-shadow: 3px 3px var(--retro-dark-gray);
 }
 
 button:hover, .btn:hover {
     background: var(--snes-gold);
-    color: #000;
+    color: black;
     transform: translate(-2px, -2px);
     box-shadow: 5px 5px var(--retro-dark-gray);
 }
@@ -167,7 +140,7 @@ footer {
     text-align: center;
 
     background: var(--snes-purple);
-    color: #fff;
+    color: white;
     font-size: 10px;
 
     border-top: 4px solid #000;
