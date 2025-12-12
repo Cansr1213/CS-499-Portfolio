@@ -1,6 +1,10 @@
+<!doctype html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rafael V. Canseco — CS-499 Capstone Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rafael V. Canseco — CS-499 Portfolio</title>
@@ -19,7 +23,11 @@
             --nes-gold: #f8b800;
             --nes-green: #00a800;
         }
-          /* ============================================================ */
+
+  <!-- IMPORTANT: repo-name prefix -->
+  <link rel="stylesheet" href="/CS-499-Portfolio/assets/css/style.css" />
+</head>
+        /* ============================================================ */
         /*  LOADING SCREEN                                              */
         /* ============================================================ */
         #loading-screen {
@@ -37,6 +45,8 @@
             transition: opacity 0.5s;
         }
 
+<body>
+  <div class="main-container">
         #loading-screen.hidden {
             opacity: 0;
             pointer-events: none;
@@ -96,14 +106,11 @@
             z-index: 9999;
         }
 
-
         /* ============================================================ */
         /*  BASE STYLES                                                 */
         /* ============================================================ */
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         html {
@@ -111,6 +118,8 @@
         }
 
         body {
+            margin: 0;
+            padding: 24px;
             font-family: "Press Start 2P", monospace;
             font-size: 12px;
             line-height: 1.7;
@@ -118,11 +127,10 @@
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0V0zm30 30h30v30H30V30z' fill='%230038a8' fill-opacity='0.4'/%3E%3C/svg%3E");
             background-color: var(--nes-blue);
             background-attachment: fixed;
-            padding: 24px;
         }
 
         /* ============================================================ */
-        /*  NAVIGATION                                                  */
+        /*  STICKY NAVIGATION                                           */
         /* ============================================================ */
         .nav-bar {
             position: sticky;
@@ -136,8 +144,6 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 0 var(--nes-black);
-            max-width: 900px;
-            margin: 0 auto 24px;
         }
 
         .nav-logo {
@@ -196,6 +202,12 @@
             border: 6px solid var(--nes-black);
             box-shadow: 4px 4px 0 var(--nes-gold);
             margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero-title {
@@ -208,49 +220,49 @@
         .hero-subtitle {
             font-size: 11px;
             color: var(--nes-dark-gray);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         /* ============================================================ */
-        /*  HEADINGS                                                    */
+        /*  STATS BAR                                                   */
         /* ============================================================ */
-        h2 {
-            color: var(--nes-red);
-            text-shadow: 2px 2px 0 var(--nes-black);
-            margin: 30px 0 20px;
-            font-size: 16px;
+        .stats-container {
+            background: var(--nes-black);
+            color: var(--nes-white);
+            padding: 20px;
+            border: 4px solid var(--nes-gold);
+            margin: 30px 0;
         }
 
-        h2::before {
-            content: "▶ ";
-            color: var(--nes-gold);
-        }
-
-        h3 {
-            color: var(--nes-blue);
-            font-size: 13px;
-            margin: 15px 0 10px;
-        }
-
-        /* ============================================================ */
-        /*  TEXT & LISTS                                                */
-        /* ============================================================ */
-        p {
+        .stat-item {
             margin: 15px 0;
-            color: var(--nes-black);
         }
 
-        ul {
-            margin: 15px 0 15px 25px;
-            list-style: none;
+        .stat-label {
+            font-size: 10px;
+            color: var(--nes-gold);
+            margin-bottom: 8px;
         }
 
-        ul li::before {
-            content: "◆ ";
-            color: var(--nes-red);
-            font-weight: bold;
-            margin-right: 8px;
+        .stat-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--nes-dark-gray);
+            border: 2px solid var(--nes-white);
+            position: relative;
+            overflow: hidden;
         }
+
+    <h1><strong>Rafael V. Canseco — CS-499 Capstone Portfolio</strong></h1>
+        .stat-fill {
+            height: 100%;
+            background: var(--nes-green);
+            transition: width 1s ease-out;
+        }
+
+    <img src="/CS-499-Portfolio/assets/img/Logo.png"
+     width="220"
+     alt="SNES-style portfolio logo">
 
         /* ============================================================ */
         /*  PROJECT CARDS                                               */
