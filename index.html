@@ -19,6 +19,83 @@
             --nes-gold: #f8b800;
             --nes-green: #00a800;
         }
+          /* ============================================================ */
+        /*  LOADING SCREEN                                              */
+        /* ============================================================ */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--nes-black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-text {
+            color: var(--nes-white);
+            font-family: "Press Start 2P", monospace;
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: blink 1s infinite;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 30px;
+            border: 4px solid var(--nes-white);
+            background: var(--nes-dark-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-fill {
+            height: 100%;
+            background: var(--nes-green);
+            width: 0%;
+            animation: loadProgress 2s forwards;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes loadProgress {
+            to { width: 100%; }
+        }
+
+        /* ============================================================ */
+        /*  SCANLINE EFFECT                                             */
+        /* ============================================================ */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.03),
+                rgba(0, 0, 0, 0.03) 2px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 9999;
+        }
+
 
         /* ============================================================ */
         /*  BASE STYLES                                                 */
