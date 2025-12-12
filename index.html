@@ -420,17 +420,6 @@
                 font-size: 12px;
             }
         }
-
-        /* ============================================================ */
-        /*  PIXEL ICONS                                                 */
-        /* ============================================================ */
-        .icon {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
     </style>
 </head>
 <body>
@@ -458,7 +447,8 @@
         <!-- HERO SECTION -->
         <section id="home" class="hero">
             <h1 class="hero-title">Rafael V. Canseco</h1>
-            <img src="/CS-499-Portfolio/assets/img/Logo.png" alt="Portfolio Logo" class="hero-logo">
+            <!-- Update this path to match your actual file location -->
+            <img src="assets/img/Logo.png" alt="Portfolio Logo" class="hero-logo" onerror="this.style.display='none'">
             <p class="hero-subtitle">CS-499 CAPSTONE PORTFOLIO</p>
             <p>Welcome to my Computer Science Capstone Portfolio! This site showcases my journey through the CS program, demonstrating skills in Software Engineering, Algorithms & Data Structures, and Database Design.</p>
         </section>
@@ -503,7 +493,7 @@
             <h2>CODE REVIEW VIDEO</h2>
             <div class="project-card">
                 <p>Watch my comprehensive code review covering all three enhancement categories:</p>
-                <a href="/CS-499-Portfolio/CS-499%20Code%20Review.mp4" class="nes-button">▶ WATCH VIDEO</a>
+                <a href="CS-499%20Code%20Review.mp4" class="nes-button">▶ WATCH VIDEO</a>
             </div>
         </section>
 
@@ -519,9 +509,9 @@
                 <p><strong>Project:</strong> 3D Scene Rendering System (CS-330)</p>
                 <p><strong>Enhancements:</strong> Architecture refactor, defensive programming, improved memory handling, and modular design.</p>
                 <div>
-                    <a href="/CS-499-Portfolio/artifacts/software-engineering/original" class="nes-button blue">ORIGINAL CODE</a>
-                    <a href="/CS-499-Portfolio/artifacts/software-engineering/enhanced" class="nes-button green">ENHANCED CODE</a>
-                    <a href="/CS-499-Portfolio/docs/software-engineering-narrative.pdf" class="nes-button">NARRATIVE</a>
+                    <a href="artifacts/software-engineering/original" class="nes-button blue">ORIGINAL CODE</a>
+                    <a href="artifacts/software-engineering/enhanced" class="nes-button green">ENHANCED CODE</a>
+                    <a href="docs/software-engineering-narrative.pdf" class="nes-button">NARRATIVE</a>
                 </div>
             </div>
 
@@ -531,9 +521,9 @@
                 <p><strong>Project:</strong> SceneManager Optimization (CS-330)</p>
                 <p><strong>Enhancements:</strong> O(1) hash maps, improved lookup logic, reduced branching, and algorithmic refactoring.</p>
                 <div>
-                    <a href="/CS-499-Portfolio/artifacts/algorithms/original" class="nes-button blue">ORIGINAL CODE</a>
-                    <a href="/CS-499-Portfolio/artifacts/algorithms/enhanced" class="nes-button green">ENHANCED CODE</a>
-                    <a href="/CS-499-Portfolio/docs/algorithms-narrative.pdf" class="nes-button">NARRATIVE</a>
+                    <a href="artifacts/algorithms/original" class="nes-button blue">ORIGINAL CODE</a>
+                    <a href="artifacts/algorithms/enhanced" class="nes-button green">ENHANCED CODE</a>
+                    <a href="docs/algorithms-narrative.pdf" class="nes-button">NARRATIVE</a>
                 </div>
             </div>
 
@@ -543,9 +533,9 @@
                 <p><strong>Project:</strong> Room Database for FitTrack (CS-360)</p>
                 <p><strong>Enhancements:</strong> User-specific queries, improved schema, MVVM + Flow integration, indexing, and better data security.</p>
                 <div>
-                    <a href="/CS-499-Portfolio/artifacts/databases/original" class="nes-button blue">ORIGINAL CODE</a>
-                    <a href="/CS-499-Portfolio/artifacts/databases/enhanced" class="nes-button green">ENHANCED CODE</a>
-                    <a href="/CS-499-Portfolio/docs/databases-narrative.pdf" class="nes-button">NARRATIVE</a>
+                    <a href="artifacts/databases/original" class="nes-button blue">ORIGINAL CODE</a>
+                    <a href="artifacts/databases/enhanced" class="nes-button green">ENHANCED CODE</a>
+                    <a href="docs/databases-narrative.pdf" class="nes-button">NARRATIVE</a>
                 </div>
             </div>
         </section>
@@ -557,7 +547,7 @@
             <h2>PROFESSIONAL SELF-ASSESSMENT</h2>
             <div class="project-card">
                 <p>A comprehensive reflection on my growth throughout the Computer Science program, highlighting key learnings, challenges overcome, and professional development.</p>
-                <a href="/CS-499-Portfolio/docs/self-assessment.pdf" class="nes-button">READ ASSESSMENT</a>
+                <a href="docs/self-assessment.pdf" class="nes-button">READ ASSESSMENT</a>
             </div>
         </section>
 
@@ -598,7 +588,7 @@
                 if (entry.isIntersecting) {
                     const fills = entry.target.querySelectorAll('.stat-fill');
                     fills.forEach(fill => {
-                        fill.style.width = fill.style.width; // Trigger animation
+                        fill.style.width = fill.style.width;
                     });
                 }
             });
