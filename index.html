@@ -21,87 +21,12 @@
         }
 
         /* ============================================================ */
-        /*  LOADING SCREEN                                              */
-        /* ============================================================ */
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--nes-black);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s;
-        }
-
-        #loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-text {
-            color: var(--nes-white);
-            font-family: "Press Start 2P", monospace;
-            font-size: 20px;
-            margin-bottom: 30px;
-            animation: blink 1s infinite;
-        }
-
-        .loading-bar {
-            width: 300px;
-            height: 30px;
-            border: 4px solid var(--nes-white);
-            background: var(--nes-dark-gray);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading-fill {
-            height: 100%;
-            background: var(--nes-green);
-            width: 0%;
-            animation: loadProgress 2s forwards;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @keyframes loadProgress {
-            to { width: 100%; }
-        }
-
-        /* ============================================================ */
-        /*  SCANLINE EFFECT                                             */
-        /* ============================================================ */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.03),
-                rgba(0, 0, 0, 0.03) 2px,
-                transparent 2px,
-                transparent 4px
-            );
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* ============================================================ */
         /*  BASE STYLES                                                 */
         /* ============================================================ */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
@@ -109,8 +34,6 @@
         }
 
         body {
-            margin: 0;
-            padding: 24px;
             font-family: "Press Start 2P", monospace;
             font-size: 12px;
             line-height: 1.7;
@@ -118,10 +41,11 @@
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0V0zm30 30h30v30H30V30z' fill='%230038a8' fill-opacity='0.4'/%3E%3C/svg%3E");
             background-color: var(--nes-blue);
             background-attachment: fixed;
+            padding: 24px;
         }
 
         /* ============================================================ */
-        /*  STICKY NAVIGATION                                           */
+        /*  NAVIGATION                                                  */
         /* ============================================================ */
         .nav-bar {
             position: sticky;
@@ -135,6 +59,8 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 0 var(--nes-black);
+            max-width: 900px;
+            margin: 0 auto 24px;
         }
 
         .nav-logo {
@@ -193,12 +119,6 @@
             border: 6px solid var(--nes-black);
             box-shadow: 4px 4px 0 var(--nes-gold);
             margin: 20px 0;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         .hero-title {
@@ -211,57 +131,48 @@
         .hero-subtitle {
             font-size: 11px;
             color: var(--nes-dark-gray);
-            margin-bottom: 30px;
-        }
-
-        /* ============================================================ */
-        /*  STATS BAR                                                   */
-        /* ============================================================ */
-        .stats-container {
-            background: var(--nes-black);
-            color: var(--nes-white);
-            padding: 20px;
-            border: 4px solid var(--nes-gold);
-            margin: 30px 0;
-        }
-
-        .stat-item {
-            margin: 15px 0;
-        }
-
-        .stat-label {
-            font-size: 10px;
-            color: var(--nes-gold);
-            margin-bottom: 8px;
-        }
-
-        .stat-bar {
-            width: 100%;
-            height: 20px;
-            background: var(--nes-dark-gray);
-            border: 2px solid var(--nes-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-fill {
-            height: 100%;
-            background: var(--nes-green);
-            transition: width 1s ease-out;
+            margin-bottom: 20px;
         }
 
         /* ============================================================ */
         /*  HEADINGS                                                    */
         /* ============================================================ */
-        h1, h2, h3 {
+        h2 {
             color: var(--nes-red);
             text-shadow: 2px 2px 0 var(--nes-black);
-            margin-top: 40px;
+            margin: 30px 0 20px;
+            font-size: 16px;
         }
 
         h2::before {
             content: "▶ ";
             color: var(--nes-gold);
+        }
+
+        h3 {
+            color: var(--nes-blue);
+            font-size: 13px;
+            margin: 15px 0 10px;
+        }
+
+        /* ============================================================ */
+        /*  TEXT & LISTS                                                */
+        /* ============================================================ */
+        p {
+            margin: 15px 0;
+            color: var(--nes-black);
+        }
+
+        ul {
+            margin: 15px 0 15px 25px;
+            list-style: none;
+        }
+
+        ul li::before {
+            content: "◆ ";
+            color: var(--nes-red);
+            font-weight: bold;
+            margin-right: 8px;
         }
 
         /* ============================================================ */
@@ -281,18 +192,12 @@
             box-shadow: 6px 6px 0 var(--nes-dark-gray);
         }
 
-        .project-title {
-            font-size: 14px;
-            color: var(--nes-blue);
-            margin-bottom: 15px;
-        }
-
         /* ============================================================ */
-        /*  NES BUTTONS                                                 */
+        /*  BUTTONS                                                     */
         /* ============================================================ */
         .nes-button {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 12px 20px;
             margin: 8px 8px 8px 0;
             background: var(--nes-red);
             border: 4px solid var(--nes-black);
@@ -359,19 +264,25 @@
             color: var(--nes-white);
             padding: 24px;
             border: 6px solid var(--nes-black);
-            margin: 30px 0;
+            margin: 20px 0;
             text-align: center;
         }
 
         .contact-box a {
             color: var(--nes-gold);
+            text-decoration: underline;
+        }
+
+        .contact-box a:hover {
+            color: var(--nes-white);
         }
 
         /* ============================================================ */
         /*  FOOTER                                                      */
         /* ============================================================ */
         footer {
-            margin-top: 40px;
+            max-width: 900px;
+            margin: 20px auto 0;
             padding: 20px;
             text-align: center;
             font-size: 10px;
@@ -390,7 +301,7 @@
             }
 
             .main-container {
-                padding: 16px;
+                padding: 20px;
             }
 
             .nav-bar {
@@ -401,6 +312,7 @@
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 10px;
             }
 
             .hero-title {
@@ -423,21 +335,12 @@
     </style>
 </head>
 <body>
-    <!-- LOADING SCREEN -->
-    <div id="loading-screen">
-        <div class="loading-text">NOW LOADING...</div>
-        <div class="loading-bar">
-            <div class="loading-fill"></div>
-        </div>
-    </div>
-
     <!-- NAVIGATION -->
     <nav class="nav-bar">
         <div class="nav-logo">PORTFOLIO v1.0</div>
         <div class="nav-links">
             <a href="#home" class="nav-link">HOME</a>
             <a href="#projects" class="nav-link">PROJECTS</a>
-            <a href="#skills" class="nav-link">SKILLS</a>
             <a href="#contact" class="nav-link">CONTACT</a>
         </div>
     </nav>
@@ -447,50 +350,22 @@
         <!-- HERO SECTION -->
         <section id="home" class="hero">
             <h1 class="hero-title">Rafael V. Canseco</h1>
-            <!-- Update this path to match your actual file location -->
-            <img src="assets/img/Logo.png" alt="Portfolio Logo" class="hero-logo" onerror="this.style.display='none'">
+            <img src="assets/img/Logo.png" alt="SNES-style portfolio logo" class="hero-logo" onerror="this.style.display='none'">
             <p class="hero-subtitle">CS-499 CAPSTONE PORTFOLIO</p>
-            <p>Welcome to my Computer Science Capstone Portfolio! This site showcases my journey through the CS program, demonstrating skills in Software Engineering, Algorithms & Data Structures, and Database Design.</p>
-        </section>
-
-        <hr>
-
-        <!-- SKILLS SECTION -->
-        <section id="skills">
-            <h2>PLAYER STATS</h2>
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-label">C++ / OpenGL</div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Java / Kotlin</div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Database Design (SQL)</div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Algorithms & Data Structures</div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 88%;"></div>
-                    </div>
-                </div>
-            </div>
+            <p>Welcome to my Computer Science Capstone Portfolio! This site showcases my journey through the CS program and the work completed for CS-499, demonstrating my skills in:</p>
+            <ul>
+                <li>Software Engineering</li>
+                <li>Algorithms & Data Structures</li>
+                <li>Database Design</li>
+            </ul>
+            <p>Each artifact includes both original and enhanced versions, complete narratives, and alignment with CS-499 outcomes.</p>
         </section>
 
         <hr>
 
         <!-- CODE REVIEW -->
         <section>
-            <h2>CODE REVIEW VIDEO</h2>
+            <h2>🎬 Code Review Video</h2>
             <div class="project-card">
                 <p>Watch my comprehensive code review covering all three enhancement categories:</p>
                 <a href="CS-499%20Code%20Review.mp4" class="nes-button">▶ WATCH VIDEO</a>
@@ -501,41 +376,40 @@
 
         <!-- PROJECTS SECTION -->
         <section id="projects">
-            <h2>ARTIFACTS & ENHANCEMENTS</h2>
+            <h2>📁 Artifacts & Enhancements</h2>
 
             <!-- Software Engineering -->
             <div class="project-card">
-                <h3 class="project-title">🧰 SOFTWARE DESIGN & ENGINEERING</h3>
+                <h3>🧰 Software Design & Engineering</h3>
                 <p><strong>Project:</strong> 3D Scene Rendering System (CS-330)</p>
                 <p><strong>Enhancements:</strong> Architecture refactor, defensive programming, improved memory handling, and modular design.</p>
                 <div>
-                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/software-engineering/original" target="_blank" class="nes-button blue">ORIGINAL CODE</a>
-                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/software-engineering/enhanced" target="_blank" class="nes-button green">ENHANCED CODE</a>
-                    <a href="docs/software-engineering-narrative.pdf" class="nes-button">NARRATIVE</a>
+                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/software-engineering/original" target="_blank" class="nes-button blue">📂 ORIGINAL CODE</a>
+                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/software-engineering/enhanced" target="_blank" class="nes-button green">📂 ENHANCED CODE</a>
+                    <a href="docs/software-engineering-narrative.pdf" class="nes-button">📄 NARRATIVE</a>
                 </div>
             </div>
 
             <!-- Algorithms -->
             <div class="project-card">
-                <h3 class="project-title">📊 ALGORITHMS & DATA STRUCTURES</h3>
+                <h3>📊 Algorithms & Data Structures</h3>
                 <p><strong>Project:</strong> SceneManager Optimization (CS-330)</p>
                 <p><strong>Enhancements:</strong> O(1) hash maps, improved lookup logic, reduced branching, and algorithmic refactoring.</p>
                 <div>
-                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/algorithms/original" target="_blank" class="nes-button blue">ORIGINAL CODE</a>
-                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/algorithms/enhanced" target="_blank" class="nes-button green">ENHANCED CODE</a>
-                    <a href="docs/algorithms-narrative.pdf" class="nes-button">NARRATIVE</a>
+                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/algorithms/enhanced" target="_blank" class="nes-button green">📂 ENHANCED CODE</a>
+                    <a href="docs/algorithms-narrative.pdf" class="nes-button">📄 NARRATIVE</a>
                 </div>
             </div>
 
             <!-- Databases -->
             <div class="project-card">
-                <h3 class="project-title">🗄️ DATABASES (FitTrack Mobile App)</h3>
+                <h3>🗄️ Databases (FitTrack Mobile App)</h3>
                 <p><strong>Project:</strong> Room Database for FitTrack (CS-360)</p>
                 <p><strong>Enhancements:</strong> User-specific queries, improved schema, MVVM + Flow integration, indexing, and better data security.</p>
                 <div>
-                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/databases/original" target="_blank" class="nes-button blue">ORIGINAL CODE</a>
-                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/databases/enhanced" target="_blank" class="nes-button green">ENHANCED CODE</a>
-                    <a href="docs/databases-narrative.pdf" class="nes-button">NARRATIVE</a>
+                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/databases/original" target="_blank" class="nes-button blue">📂 ORIGINAL CODE</a>
+                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/databases/enhanced" target="_blank" class="nes-button green">📂 ENHANCED CODE</a>
+                    <a href="docs/databases-narrative.pdf" class="nes-button">📄 NARRATIVE</a>
                 </div>
             </div>
         </section>
@@ -544,7 +418,7 @@
 
         <!-- SELF ASSESSMENT -->
         <section>
-            <h2>PROFESSIONAL SELF-ASSESSMENT</h2>
+            <h2>📝 Professional Self-Assessment</h2>
             <div class="project-card">
                 <p>A comprehensive reflection on my growth throughout the Computer Science program, highlighting key learnings, challenges overcome, and professional development.</p>
                 <a href="docs/self-assessment.pdf" class="nes-button">READ ASSESSMENT</a>
@@ -553,51 +427,47 @@
 
         <hr>
 
-        <!-- CONTACT -->
-        <section id="contact">
-            <h2>CONTACT</h2>
-            <div class="contact-box">
-                <p><strong>Rafael V. Canseco</strong></p>
-                <p>GitHub: <a href="https://github.com/Cansr1213" target="_blank">github.com/Cansr1213</a></p>
-                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <!-- DOCUMENTATION -->
+        <section>
+            <h2>📂 Additional Documentation</h2>
+            <div class="project-card">
+                <p>All milestone PDFs and supporting documents can be found in the <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/docs" target="_blank"><strong>/docs folder</strong></a>.</p>
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer>
-            <p>Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco</p>
-            <p>Built with ❤️ and retro gaming nostalgia</p>
-        </footer>
+        <hr>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>📞 Contact</h2>
+            <div class="contact-box">
+                <p><strong>Rafael V. Canseco</strong></p>
+                <p>GitHub: <a href="https://github.com/Cansr1213" target="_blank">github.com/Cansr1213</a></p>
+                <p>Email: <a href="mailto:rafael.canseco@snhu.edu">rafael.canseco@snhu.edu</a></p>
+            </div>
+        </section>
     </div>
 
+    <!-- FOOTER -->
+    <footer>
+        <p>Super NES Inspired Portfolio Theme © 2025 Rafael V. Canseco</p>
+        <p>Built with ❤️ and retro gaming nostalgia</p>
+    </footer>
+
     <script>
-        // Loading screen animation
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loading-screen').classList.add('hidden');
-            }, 2000);
-        });
-
-        // Animate stats bars on scroll
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const fills = entry.target.querySelectorAll('.stat-fill');
-                    fills.forEach(fill => {
-                        fill.style.width = fill.style.width;
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
-        }, observerOptions);
-
-        const statsContainer = document.querySelector('.stats-container');
-        if (statsContainer) {
-            observer.observe(statsContainer);
-        }
+        });
     </script>
 </body>
 </html>
