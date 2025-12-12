@@ -283,12 +283,24 @@
         footer {
             max-width: 900px;
             margin: 20px auto 0;
-            padding: 20px;
+            padding: 24px;
             text-align: center;
             font-size: 10px;
             background: var(--nes-black);
             color: var(--nes-white);
-            border: 4px solid var(--nes-gold);
+            border: 6px solid var(--nes-gold);
+            box-shadow: 0 0 0 4px var(--nes-black);
+            line-height: 1.8;
+        }
+
+        footer p {
+            color: var(--nes-white);
+            margin: 8px 0;
+        }
+
+        footer p:first-child {
+            color: var(--nes-gold);
+            font-weight: bold;
         }
 
         /* ============================================================ */
@@ -396,6 +408,7 @@
                 <p><strong>Project:</strong> SceneManager Optimization (CS-330)</p>
                 <p><strong>Enhancements:</strong> O(1) hash maps, improved lookup logic, reduced branching, and algorithmic refactoring.</p>
                 <div>
+                    <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/algorithms/original" target="_blank" class="nes-button blue">📂 ORIGINAL CODE</a>
                     <a href="https://github.com/Cansr1213/CS-499-Portfolio/tree/main/artifacts/algorithms/enhanced" target="_blank" class="nes-button green">📂 ENHANCED CODE</a>
                     <a href="docs/algorithms-narrative.pdf" class="nes-button">📄 NARRATIVE</a>
                 </div>
