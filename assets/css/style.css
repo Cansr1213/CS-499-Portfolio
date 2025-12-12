@@ -1,148 +1,131 @@
-/* ------------------------------------------------------------ */
-/*  SUPER NINTENDO COLOR THEME (CS-499 SAFE)                    */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
+/*  NES-STYLE COLOR THEME — CS-499 PORTFOLIO                    */
+/* ============================================================ */
 
 :root {
-    --snes-purple: #5d4cff;
-    --snes-dark-purple: #3a2bbf;
-    --snes-sky: #7ec0ff;
-    --snes-gold: #ffdd55;
-    --retro-gray: #dcdcdc;
-    --retro-dark-gray: #2b2b2b;
+    --nes-black: #0f0f0f;
+    --nes-dark-gray: #2b2b2b;
+    --nes-light-gray: #d8d8d8;
+    --nes-white: #ffffff;
+
+    --nes-red: #d82800;
+    --nes-blue: #0038a8;
+    --nes-gold: #f8b800;
 }
 
-/* ------------------------------------------------------------ */
-/*  GLOBAL STYLES (PAGE BACKGROUND IMAGE)                       */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
+/*  PAGE BACKGROUND (YOUR IMAGE — RESPONSIVE)                   */
+/* ============================================================ */
 
 body {
     margin: 0;
-    padding: 20px;
+    padding: 24px;
 
     font-family: "Press Start 2P", monospace;
     font-size: 12px;
-    color: #111;
+    line-height: 1.7;
+    color: var(--nes-black);
 
-    /* ✅ background.png IS THE PAGE BACKGROUND */
-    background: url("/CS-499-Portfolio/assets/img/background.png") center / cover no-repeat fixed;
+    /* ✅ YOUR IMAGE */
+    background-image: url("/CS-499-Portfolio/assets/img/background.png");
+
+    /* ✅ PREVENT ZOOM */
+    background-size: contain;
+
+    /* ✅ CENTER IMAGE */
+    background-position: center top;
+
+    /* ✅ NO TILING */
+    background-repeat: no-repeat;
+
+    /* ✅ FALLBACK COLOR */
+    background-color: var(--nes-blue);
 }
 
-/* ------------------------------------------------------------ */
-/*  MAIN CONTAINER (SNES PANEL)                                 */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
+/*  MAIN CONTENT PANEL (READABLE OVER IMAGE)                    */
+/* ============================================================ */
 
 .main-container {
     max-width: 900px;
     margin: auto;
-    padding: 28px;
+    padding: 32px;
 
-    /* Semi-transparent SNES panel */
-    background: rgba(220, 220, 220, 0.95);
+    /* White NES-style panel */
+    background: rgba(216, 216, 216, 0.96);
 
-    border-radius: 10px;
-    border: 6px solid var(--snes-purple);
+    border: 6px solid var(--nes-black);
+    border-radius: 6px;
 
     box-shadow:
-        0 0 0 4px var(--retro-dark-gray),
-        inset 0 0 18px rgba(0,0,0,0.3),
-        0 0 22px rgba(93, 76, 255, 0.6);
+        0 0 0 4px var(--nes-white),
+        6px 6px 0 var(--nes-black);
 }
 
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 /*  HEADINGS                                                    */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 
 h1, h2, h3 {
-    color: var(--snes-purple);
-    text-shadow: 2px 2px 0 #000;
-    margin-top: 32px;
+    color: var(--nes-red);
+    text-shadow: 2px 2px 0 var(--nes-black);
+    margin-top: 28px;
 }
 
-/* ------------------------------------------------------------ */
-/*  TEXT READABILITY                                            */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
+/*  TEXT                                                       */
+/* ============================================================ */
 
 p, li {
-    color: #1a1a1a;
-    line-height: 1.7;
+    color: var(--nes-black);
 }
 
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 /*  LINKS                                                       */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 
 a {
-    color: var(--snes-dark-purple);
+    color: var(--nes-blue);
     font-weight: bold;
     text-decoration: none;
 }
 
 a:hover {
-    color: var(--snes-gold);
-    text-shadow: 2px 2px 0 #000;
+    color: var(--nes-gold);
+    text-shadow: 1px 1px 0 var(--nes-black);
 }
 
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 /*  DIVIDERS                                                    */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 
 hr {
     border: none;
     height: 4px;
     margin: 32px 0;
-    background: linear-gradient(
-        to right,
-        var(--snes-purple),
-        var(--snes-gold),
-        var(--snes-purple)
-    );
+    background:
+        repeating-linear-gradient(
+            90deg,
+            var(--nes-black),
+            var(--nes-black) 12px,
+            var(--nes-white) 12px,
+            var(--nes-white) 24px
+        );
 }
 
-/* ------------------------------------------------------------ */
-/*  SECTION BOXES                                               */
-/* ------------------------------------------------------------ */
-
-.section-box {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.96);
-    border-radius: 6px;
-    border: 4px solid var(--snes-purple);
-}
-
-/* ------------------------------------------------------------ */
-/*  BUTTONS                                                     */
-/* ------------------------------------------------------------ */
-
-button, .btn {
-    background: var(--snes-purple);
-    border: 3px solid var(--retro-dark-gray);
-    padding: 12px 18px;
-    color: white;
-    border-radius: 6px;
-    font-family: "Press Start 2P";
-    box-shadow: 3px 3px var(--retro-dark-gray);
-}
-
-button:hover, .btn:hover {
-    background: var(--snes-gold);
-    color: black;
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px var(--retro-dark-gray);
-}
-
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 /*  FOOTER                                                      */
-/* ------------------------------------------------------------ */
+/* ============================================================ */
 
 footer {
     margin-top: 40px;
-    padding: 14px;
-    text-align: center;
+    padding: 16px;
 
-    background: var(--snes-purple);
-    color: white;
+    text-align: center;
     font-size: 10px;
 
-    border-top: 4px solid #000;
-    text-shadow: 1px 1px 0 #000;
+    background: var(--nes-black);
+    color: var(--nes-white);
+
+    border-top: 4px solid var(--nes-gold);
 }
