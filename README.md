@@ -74,7 +74,7 @@ All milestone PDFs and supporting documents can be found in the
 ## 📞 **Contact**
 **Rafael V. Canseco**  
 GitHub: https://github.com/Cansr1213  
-Email: *your email here*
+Email: rafael.canseco@snhu.edu
 
 </div>
 
